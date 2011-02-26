@@ -2,6 +2,7 @@
 
 # www.rb
 # Jamie Carranza
+# jamie.carranza@gmail.com
 # February 25, 2011
 
 # Nagios Mobile is a simple Ruby/Sinatra based Nagios web interface suitable for mobile devices.  It's sort of a clone

@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 # Jamie Carranza
+# jamie.carranza@gmail.com
 # October 24, 2010
 
 # nag-gen.rb
@@ -12,7 +13,7 @@ require 'parseconfig'
 require 'uri'
 
 # Nagios status file
-Status_file = '/home/jamie/status.dat'
+Status_file = '/usr/local/nagios/var/status.dat'
 
 # Temp file
 Temp_file = '/dev/shm/nagios-mobile.tmp'
