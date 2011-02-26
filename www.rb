@@ -28,7 +28,7 @@ require 'sass'
 # set :port, 4567
 
 # Where Nagios Mobile lives
-docroot = '/home/jamie/nagios-mobile/'
+Docroot = '/usr/local/nagios/nagios-mobile/'
 
 # Acknowledgement stickiness
 Sticky = '0'
@@ -39,15 +39,11 @@ Notify = '1'
 # Page Title
 Title = 'Nagios Mobile'
 
-# Nagios status file
-Status_file = '/home/jamie/status.dat'
-
 # Nagios external command pipe
-#CommandFile = '/usr/local/nagios/var/rw/nagios.cmd'
-CommandFile = 'nag_cmd'
+CommandFile = '/usr/local/nagios/var/rw/nagios.cmd'
 
-
-content = docroot + 'body.haml'
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+content = Docroot + 'body.haml'
 
 # Set the 'public' directory to the app root
 set :public, File.dirname(__FILE__) + '/'
@@ -61,7 +57,7 @@ end
 
 # Main Page
 get '/' do
-	@c = %x{"#{docroot}/nag-gen.rb"}
+	@c = %x{"#{Docroot}/nag-gen.rb"}
 	File.open(content, 'w') {|f| f.write("#{@c}") }
     body_template  = File.read( content )
     body_haml_engine = Haml::Engine.new(body_template)
