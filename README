@@ -1,0 +1,16 @@
+# README
+
+Nagios Mobile
+Jamie Carranza
+
+# Nagios Mobile is a simple Ruby/Sinatra based Nagios web interface suitable for mobile devices.  It's sort of a clone
+# of Nag Small Screen by Ryan McDonald.
+
+	# Alerts can be acknowledged or un-acknowledged using Nagios' 'external commands' feature.
+	# If logged in using HTTP authentication methods, the user available in the HTTP_X_REMOTE_USER variable is noted as
+	# the acknowledging party.
+
+	# Parses the 'status.dat' file produced by Nagios
+	# The defaults are fine for many installations and correspond with the defaults you get with Nagios
+	# Nagios Mobile requires Ruby 1.8 and the following gems: sinatra, haml, parseconfig
+	# Have the main HTTP server rewrite/redirect requests for '/mobile' to the port this server listens on
