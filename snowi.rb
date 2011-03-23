@@ -1,11 +1,9 @@
-# Nagios Mobile
-
-# www.rb
-# Jamie Carranza
+# snowi.rb
+# Copyright 2011 Jamie Carranza
 # jamie.carranza@gmail.com
-# February 25, 2011
+# March 22, 2011
 
-# Nagios Mobile is a simple Ruby/Sinatra based Nagios web interface suitable for mobile devices.  It's sort of a clone
+# Snowi is a simple Ruby/Sinatra based Nagios web interface suitable for mobile devices.  It's sort of a clone
 # of Nag Small Screen by Ryan McDonald.
 
 	# Alerts can be acknowledged or un-acknowledged using Nagios' 'external commands' feature.
@@ -14,12 +12,30 @@
 
 	# Parses the 'status.dat' file produced by Nagios
 	# The defaults are fine for many installations and correspond with the defaults you get with Nagios
-	# Nagios Mobile requires Ruby 1.8 and the following gems: sinatra, haml, parseconfig
-	# Have the main HTTP server rewrite/redirect requests for '/mobile' to the port this server listens on
+	# Snowi requires Ruby 1.8 and the following gems: sinatra, haml, parseconfig
+	# Have the main HTTP server act as reverse proxy for the port/socket this server listens on
 
 # --> This script requires a companion script called nag-gen.rb to generate page content.
 
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+#    This file is part of Snowi.
+
+#    Snowi is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+
+#    Foobar is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+
+#    You should have received a copy of the GNU General Public License
+#    along with Snowi.  If not, see <http://www.gnu.org/licenses/>.
+
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
 require 'rubygems'
 require 'sinatra'
 require 'haml'
@@ -29,7 +45,7 @@ require 'sass'
 # set :port, 4567
 
 # Where Nagios Mobile lives
-Docroot = '/usr/local/nagios/nagios-mobile/'
+Docroot = '/usr/local/nagios/snowi/'
 
 # Acknowledgement stickiness
 Sticky = '0'
@@ -38,7 +54,7 @@ Sticky = '0'
 Notify = '1'
 
 # Page Title
-Title = 'Nagios Mobile'
+Title = 'Snowi'
 
 # Nagios external command pipe
 CommandFile = '/usr/local/nagios/var/rw/nagios.cmd'

@@ -1,24 +1,22 @@
 #!/bin/bash
 
-# Jamie Carranza
-# jamie.carranza@gmail.com
-# February 26, 2011
-
 # chkconfig: - 90 10
 # description: Redhat style initialization script for a single Ruby/Sinatra process.
-# processname: ruby www.rb
+# processname: ruby snowi.rb
 
-nagios-mobile='/usr/local/nagios/nagios-mobile/nagios-mobile.rb'
-prog='nagios-mobile'
-pidfile='/var/run/nagios-mobile.pid'
-lockfile='/var/lock/subsys/nagios-mobile'
+APP='/usr/local/nagios/snowi/snowi.rb'
+prog='snowi'
+pidfile='/var/run/snowi.pid'
+lockfile='/var/lock/subsys/snowi'
 RETVAL='0'
+
+#-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 . /etc/rc.d/init.d/functions
 
 START () {
     echo -n $"Starting $prog: "
-    daemon --pidfile=${pidfile} $nagios-mobile $OPTIONS
+    daemon --pidfile=${pidfile} $APP $OPTIONS
     RETVAL="$?"
     echo
     [ "$RETVAL" = 0 ] && touch ${lockfile}
@@ -27,7 +25,7 @@ START () {
 
 STOP () {
     echo -n $"Stopping $prog: "
-    killproc -p ${pidfile} -d 10 $nagios-mobile
+    killproc -p ${pidfile} -d 10 $APP
     RETVAL="$?"
     echo
     [ $RETVAL = 0 ] && rm -f ${lockfile} ${pidfile}
